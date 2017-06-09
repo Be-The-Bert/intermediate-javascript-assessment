@@ -13,7 +13,10 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-
+function callBinding(magicAnimals, updateAnimal, id) {
+    var animal = magicAnimals[id];
+    return updateAnimal.call(animal, "Trogdor");
+}
 
 
 // *************
@@ -28,7 +31,10 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-
+function applyBinding(magicAnimals, updateAnimal, id) {
+    var animal = magicAnimals[id];
+    return updateAnimal.apply(animal, ['being majestic', 'eating rainbows']);
+}
 
 
 // *************
