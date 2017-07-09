@@ -32,7 +32,7 @@ function callBinding(magicAnimals, updateAnimal, id) {
 
 // CODE HERE...
 function applyBinding(magicAnimals, updateAnimal, id) {
-    var animal = magicAnimals[id];
+    var animal = magicAnimals[id - 1];
     return updateAnimal.apply(animal, ['being majestic', 'eating rainbows']);
 }
 
@@ -55,7 +55,14 @@ var foo;
 
 // CODE HERE...
 
-
+function promiseMe(promiseObj) {
+    return new Promise((res, rej) => {
+        setTimeout(function(foo) {
+            foo = 'bar';
+            res(foo);
+        }, 20, foo);
+    })
+}
 
 // *************
 // * PROBLEM 4 *
@@ -70,3 +77,14 @@ var foo;
 // and then resolve the array as you complete your promise.
 
 // CODE HERE...
+
+function emailList(promObj, httpObj) {
+    var prom = new Promise((res, rej) => {
+        var temp = $http.get('/api/users');
+        res(temp);
+    });
+    return prom.then(res => {
+        var arr = res.data.map(user => user.email);
+        return arr;
+    });
+}

@@ -42,7 +42,12 @@ function noWeakLink() {
   return $http({
     method: 'GET',
     url: '/api/users'
-  })
+  }).then( res => {
+    firstUser = res.data[0]
+    return res}).then( res => {
+      thirdUser = res.data[2]
+      return res.data[9]
+    })
   // CODE HERE...
 
 }
@@ -74,6 +79,7 @@ function large() {
 }
 // CODE HERE...
 var boundToElephant = large.bind(elephant);
+console.log(boundToElephant('neville'));
 // *************
 // * PROBLEM 3 *
 // *************
@@ -136,7 +142,6 @@ function forgetter(name) {
   this.remember = []
   return function rememberall(item) {
     var temp = this.remember;
-    console.log(temp);
     temp.push(item);
     this.remember = temp;
     return this;
